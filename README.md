@@ -21,7 +21,13 @@ Step 0: Clone the repo
 git clone https://github.com/glaucomaa/Simple-backend-frontend-app.git
 ```
 
-Step 1: Start Kubernetes cluster:
+Step 1: Navigate to the cloned repo:
+
+```bash
+cd Simple-backend-frontend-app
+```
+
+Step 2: Start Kubernetes cluster:
 
 ```bash
 minikube start && \
@@ -29,7 +35,7 @@ kubectl create namespace click && \
 kubectl config set-context --current --namespace=click
 ```
 
-Step 2: Build docker images
+Step 3: Build docker images
 
 ```bash
 eval $(minikube docker-env) && \ 
@@ -37,19 +43,19 @@ docker build -t frontend:latest ./frontend && \
 docker build -t backend:latest ./backend
 ```
 
-Step 3: Deploy the application:
+Step 4: Deploy the application:
 
 ```bash
 kubectl apply -f k8s
 ```
 
-Step 4: Verify the status of all pods::
+Step 5: Verify the status of all pods::
 
 ```bash
 kubectl get pods
 ```
 
-Step 5: obtain the URL for frontend:
+Step 6: obtain the URL for frontend:
 
 ```bash
 minikube service frontend-service -n click --url
